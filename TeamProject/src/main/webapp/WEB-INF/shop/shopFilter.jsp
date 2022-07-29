@@ -463,20 +463,21 @@ var collection = [];
 						}
 					 });
 					$(this).closest("div").remove();
-					for(var j = 0 ; j<$('.shop_tag_item').length ; i++)
-					if($('.shop_tag_item').eq(i).children().eq(2).val()==1) {
-						category.push($('.shop_tag_item').eq(i).children('.shop_tag').text())
+					for(var j = 0 ; j<$('.shop_tag_item').length ; i++) {
+						if($('.shop_tag_item').eq(i).children().eq(2).val()==1) {
+							category.push($('.shop_tag_item').eq(i).children('.shop_tag').text())
+						}
+						if($('.shop_tag_item').eq(i).children().eq(2).val()==2) {
+							brand.push($('.shop_tag_item').eq(i).children('.shop_tag').text())
+						}
+						if($('.shop_tag_item').eq(i).children().eq(2).val()==3) {
+							gender.push($('.shop_tag_item').eq(i).children('.shop_tag').text())
+						}
+						if($('.shop_tag_item').eq(i).children().eq(2).val()==4) {
+							collection.push($('.shop_tag_item').eq(i).children('.shop_tag').text())
+						}
 					}
-					if($('.shop_tag_item').eq(i).children().eq(2).val()==2) {
-						brand.push($('.shop_tag_item').eq(i).children('.shop_tag').text())
-					}
-					if($('.shop_tag_item').eq(i).children().eq(2).val()==3) {
-						gender.push($('.shop_tag_item').eq(i).children('.shop_tag').text())
-					}
-					if($('.shop_tag_item').eq(i).children().eq(2).val()==4) {
-						collection.push($('.shop_tag_item').eq(i).children('.shop_tag').text())
-					}
-					
+					getList(current)
 					
 				});
 				tagitem_inner == null;
@@ -834,7 +835,7 @@ var collection = [];
                 <li class="menu">
                     <a class="menu_link">
                         <img src="/TeamProject/img/shop/checkbox-inactive.png"  class="checkbox-icon sprite-icons checkbox-inactive"></img>
-                        <span class="link_txt">키즈</span>
+                        <span class="link_txt">공용</span>
                     </a>
                     <ul class="menu_list menu_2depth" style="display: none;"></ul>
                 </li>

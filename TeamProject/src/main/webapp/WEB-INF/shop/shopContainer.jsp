@@ -449,7 +449,7 @@ li, ol, ul {
 </style>
 </head>
 <body>
-<input type="hidden" id="command">
+<input type="hidden" id="command" value=''>
 <div class="banner_main">
 	<div class="slider slider-for">
 		<div class="detail_banner">
@@ -606,6 +606,8 @@ li, ol, ul {
  
 //검색하면  정렬기준 href 바꾸기
 $(document).ready(function(){
+	var param123 = new URLSearchParams(document.location.search);
+	$('#command').val(param123.get("command"))
 	$('#popular').children().eq(0).prop('href' , '/TeamProject/shop?sort=popular&command='+$('#command').val())
 	$('#buy').children().eq(0).prop('href' , '/TeamProject/shop?sort=buy&command='+$('#command').val())
 	$('#sell').children().eq(0).prop('href' , '/TeamProject/shop?sort=sell&command='+$('#command').val())
