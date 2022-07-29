@@ -42,18 +42,25 @@ var collection = [];
 				/* 상품태그 추가 생성 */
 				if($('.shop_tag_item').length <= 5){
 					var i = $('.shop_tag_item').length
-					$('.shop_filter_tag').append("<div class='shop_tag_item' > <span class='shop_tag'>" + tagitem_inner
-							+ "</span> <img class='shop_tag_svg' src='/TeamProject/img/shop/x-lg.svg'> </div>");
+					
 					if($(this).parent().parent().parent().parent().parent().children().eq(0).val() == $('.search_filter').children().eq(1).children().eq(0).val()) {
+						$('.shop_filter_tag').append("<div class='shop_tag_item' > <span class='shop_tag'>" + tagitem_inner
+								+ "</span> <img class='shop_tag_svg' src='/TeamProject/img/shop/x-lg.svg'> "+"<input type='hidden' value=1>"+"</div>");
 						category.push($('.shop_tag_item').eq(i).children('.shop_tag').text())
 					}
 					if($(this).parent().parent().parent().parent().parent().children().eq(0).val() == $('.search_filter').children().eq(2).children().eq(0).val()) {
+						$('.shop_filter_tag').append("<div class='shop_tag_item' > <span class='shop_tag'>" + tagitem_inner
+								+ "</span> <img class='shop_tag_svg' src='/TeamProject/img/shop/x-lg.svg'> "+"<input type='hidden' value=2>"+"</div>");
 						brand.push($('.shop_tag_item').eq(i).children('.shop_tag').text())
 					}
 					if($(this).parent().parent().parent().parent().parent().children().eq(0).val() == $('.search_filter').children().eq(3).children().eq(0).val()) {
+						$('.shop_filter_tag').append("<div class='shop_tag_item' > <span class='shop_tag'>" + tagitem_inner
+								+ "</span> <img class='shop_tag_svg' src='/TeamProject/img/shop/x-lg.svg'> "+"<input type='hidden' value=3>"+"</div>");
 						gender.push($('.shop_tag_item').eq(i).children('.shop_tag').text())
 					}
 					if($(this).parent().parent().parent().parent().parent().children().eq(0).val() == $('.search_filter').children().eq(4).children().eq(0).val()) {
+						$('.shop_filter_tag').append("<div class='shop_tag_item' > <span class='shop_tag'>" + tagitem_inner
+								+ "</span> <img class='shop_tag_svg' src='/TeamProject/img/shop/x-lg.svg'> "+"<input type='hidden' value=4>"+"</div>");
 						collection.push($('.shop_tag_item').eq(i).children('.shop_tag').text())
 					}						
 				}
@@ -421,7 +428,11 @@ var collection = [];
 
 				
 				/* 체크박스 체크해제시 상품태그 지우기 */ 
-				$('.shop_tag_svg').on('click', function(){
+				$(document).on('click','.shop_tag_svg' ,function(){
+					category= [];
+					brand = [];
+					gender = [];
+					collection = [];
 					tagText = $(this).prev().text();
 					
 					$('.checkbox-active').each(function(){
@@ -440,6 +451,21 @@ var collection = [];
 						}
 					 });
 					$(this).closest("div").remove();
+					for(var j = 0 ; j<$('.shop_tag_item').length ; i++)
+					if($('.shop_tag_item').eq(i).children().eq(2).val()==1) {
+						category.push($('.shop_tag_item').eq(i).children('.shop_tag').text())
+					}
+					if($('.shop_tag_item').eq(i).children().eq(2).val()==2) {
+						brand.push($('.shop_tag_item').eq(i).children('.shop_tag').text())
+					}
+					if($('.shop_tag_item').eq(i).children().eq(2).val()==3) {
+						gender.push($('.shop_tag_item').eq(i).children('.shop_tag').text())
+					}
+					if($('.shop_tag_item').eq(i).children().eq(2).val()==4) {
+						collection.push($('.shop_tag_item').eq(i).children('.shop_tag').text())
+					}
+					
+					
 				});
 				tagitem_inner == null;
 			}
@@ -461,7 +487,8 @@ var collection = [];
 					$(this).closest("div").prev().find('span:eq(1)').show();
 				}
 				
-			}
+	
+	}
 			if($('.checkbox-active').length >= 1){
 				
 				$('.btn_delete').show();
