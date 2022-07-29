@@ -93,8 +93,10 @@ public class ShopController {
 		
 //		System.out.println(map);
 		List<ShopDTO> list = shopService.scrollProductList(map, sort);
-		list.get(0).setPage(num); // ! important!!!!
-	
+		if(list.size() != 0) {
+			list.get(0).setPage(num); // ! important!!!!
+		}
+		System.out.println(list);
 		return list;
 	}
   

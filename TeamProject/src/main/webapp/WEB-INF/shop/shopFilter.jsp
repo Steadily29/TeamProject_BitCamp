@@ -181,7 +181,16 @@ var collection = [];
 								'collection' : collection}, 
 							dataType:'json',
 							success: function(data){
-								if(Number(data[0].page) === 1){
+								var pageNum;
+								
+								if(data == ''){
+									pageNum = 1;
+								}
+								else{
+									pageNum = Number(data[0].page);
+								}
+								
+								if(pageNum === 1){
 									$('.shop-list-ul').html("");									
 								}
 								try {						
@@ -253,7 +262,8 @@ var collection = [];
 											observeLastItem(io, items);
 											//첫페이지 스크롤 감지 시작
 										}
-										currentNum = Number(data[0].page)+16;
+/* 										currentNum = Number(data[0].page)+16; */
+										currentNum = pageNum+16;
 										if (callback) {
 											callback();		
 										}
